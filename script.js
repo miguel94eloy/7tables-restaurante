@@ -157,6 +157,191 @@ if (typeof window.initScrollRevealAdded === 'undefined') {
     }
 }
 
+// ============================================
+// PROTECCIÓN AVANZADA - ANTI CLONACIÓN Y NOTIFICACIONES
+// DOMINIO CORREGIDO PARA GITHUB PAGES
+// ============================================
+
+(function() {
+    // 1. BLOQUEAR HERRAMIENTAS DE DESARROLLADOR
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12') {
+            e.preventDefault();
+            notificarIntento('F12 - Herramientas de desarrollador');
+            return false;
+        }
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+            e.preventDefault();
+            notificarIntento('Ctrl+Shift+I - Inspeccionar elemento');
+            return false;
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+            e.preventDefault();
+            notificarIntento('Ctrl+U - Ver código fuente');
+            return false;
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            notificarIntento('Ctrl+S - Guardar página');
+            return false;
+        }
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
+            e.preventDefault();
+            notificarIntento('Ctrl+Shift+C - Inspeccionar elemento');
+            return false;
+        }
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
+            e.preventDefault();
+            notificarIntento('Ctrl+Shift+J - Consola');
+            return false;
+        }
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'K') {
+            e.preventDefault();
+            notificarIntento('Ctrl+Shift+K - Consola');
+            return false;
+        }
+    });
+
+    // 2. BLOQUEAR CLIC DERECHO
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        notificarIntento('Clic derecho');
+        return false;
+    });
+
+    // 3. DETECTAR HERRAMIENTAS DE DESARROLLADOR
+    let devToolsOpen = false;
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function() {
+            devToolsOpen = true;
+            notificarIntento('Herramientas de desarrollador abiertas');
+            return '';
+        }
+    });
+    
+    setInterval(function() {
+        devToolsOpen = false;
+        console.log(element);
+        console.clear();
+        if (devToolsOpen) {
+            notificarIntento('Consola abierta');
+        }
+    }, 1000);
+
+    // 4. BLOQUEAR COPIA Y CORTE
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        notificarIntento('Intento de copiar contenido');
+        alert('❌ Contenido protegido. No está permitido copiar información de este sitio.');
+        return false;
+    });
+
+    document.addEventListener('cut', function(e) {
+        e.preventDefault();
+        notificarIntento('Intento de cortar contenido');
+        return false;
+    });
+
+    // 5. BLOQUEAR IMPRESIÓN
+    window.matchMedia('print').addListener(function(mql) {
+        if (mql.matches) {
+            notificarIntento('Intento de imprimir página');
+            alert('❌ No está permitido imprimir esta página.');
+        }
+    });
+
+    // 6. NOTIFICAR SELECCIONES LARGAS
+    document.addEventListener('selectstart', function(e) {
+        setTimeout(function() {
+            const selection = window.getSelection().toString();
+            if (selection.length > 50) {
+                notificarIntento('Selección larga de texto - posible copia');
+            }
+        }, 100);
+    });
+
+    // 7. VERIFICACIÓN POR DOMINIO - CORREGIDO PARA GITHUB PAGES
+    const dominiosPermitidos = [
+        'localhost',
+        '127.0.0.1',
+        'miguel94eloy.github.io',   // ✅ Tu dominio de GitHub Pages
+        '7tables-restaurante.com'    // Si compras dominio propio en el futuro
+    ];
+    
+    const dominioActual = window.location.hostname;
+    const esDominioValido = dominiosPermitidos.some(dominio => dominioActual === dominio || dominioActual.includes(dominio));
+    
+    if (!esDominioValido && dominioActual !== '' && !dominioActual.includes('file://')) {
+        // Limpiar la página y mostrar mensaje de clonación
+        document.body.innerHTML = `
+            <div style="text-align:center;padding:100px 20px;font-family:Arial,sans-serif;min-height:100vh;background:#f5f5f5;">
+                <div style="max-width:500px;margin:0 auto;background:white;border-radius:20px;padding:40px;box-shadow:0 10px 30px rgba(0,0,0,0.1);">
+                    <div style="font-size:4rem;margin-bottom:20px;">⚠️</div>
+                    <h2 style="color:#e74c3c;margin-bottom:15px;">Sitio no autorizado</h2>
+                    <p style="color:#666;margin-bottom:20px;">Este contenido está protegido por derechos de autor.</p>
+                    <p style="color:#999;font-size:0.9rem;">Visite el sitio oficial en:</p>
+                    <p style="color:#3498db;font-weight:bold;">miguel94eloy.github.io/7tables-restaurante</p>
+                </div>
+            </div>
+        `;
+        console.warn('⚠️ Dominio no autorizado:', dominioActual);
+        throw new Error('Dominio no autorizado');
+    }
+
+    // 8. FUNCIÓN PARA NOTIFICAR INTENTOS
+    function notificarIntento(accion) {
+        const timestamp = new Date().toISOString();
+        const info = {
+            accion: accion,
+            timestamp: timestamp,
+            url: window.location.href,
+            userAgent: navigator.userAgent,
+            dominio: window.location.hostname
+        };
+        
+        console.warn('🔒 Intento detectado:', info);
+        
+        // Guardar en localStorage
+        let intentos = localStorage.getItem('seguridad_intentos');
+        if (intentos) {
+            intentos = JSON.parse(intentos);
+            intentos.push(info);
+            if (intentos.length > 50) intentos.shift();
+        } else {
+            intentos = [info];
+        }
+        localStorage.setItem('seguridad_intentos', JSON.stringify(intentos));
+        
+        // Mostrar alerta para acciones críticas
+        if (accion.includes('F12') || accion.includes('Consola') || accion.includes('Herramientas') || accion.includes('copiar')) {
+            mostrarAlertaSeguridad();
+        }
+    }
+    
+    // 9. MOSTRAR ALERTA NO INTRUSIVA
+    let alertaTimeout = null;
+    function mostrarAlertaSeguridad() {
+        if (document.querySelector('.alerta-seguridad')) return;
+        
+        const alerta = document.createElement('div');
+        alerta.className = 'alerta-seguridad';
+        alerta.innerHTML = `
+            <div style="position:fixed;bottom:20px;right:20px;background:#e74c3c;color:white;padding:12px 20px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 12px rgba(0,0,0,0.2);font-family:monospace;">
+                🚫 Acceso restringido - Contenido protegido
+            </div>
+        `;
+        document.body.appendChild(alerta);
+        
+        if (alertaTimeout) clearTimeout(alertaTimeout);
+        alertaTimeout = setTimeout(() => {
+            if (alerta && alerta.remove) alerta.remove();
+        }, 3000);
+    }
+    
+    console.log('✅ Sistema de protección activado - Dominio permitido:', dominioActual);
+})();
+
 // Inicializar mapa cuando el DOM esté listo y estemos en location.html
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('mapa-restaurante')) {

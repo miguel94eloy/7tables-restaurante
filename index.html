@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Restaurante | Home</title>
+    <meta name="description" content="Restaurante con los mejores platos de seafood, beef, sopas y bebidas. Calidad y sabor en cada bocado.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="imagenes/header/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/header/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="imagenes/header/favicon-192x192.png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER SUPERIOR (sin logo) -->
+    <header class="header-superior">
+        <div class="header-vacio"></div>
+        <div class="header-derecha">
+            <button class="btn-idioma" id="btnIdioma">🇪🇸 Español</button>
+        </div>
+    </header>
+
+    <!-- BANNER AZUL DE NAVEGACIÓN (encima del slider) -->
+    <nav class="banner-azul">
+        <ul class="nav-lista">
+            <li><a href="index.html" class="nav-link activo">Home</a></li>
+            <li><a href="about.html" class="nav-link">Acerca de</a></li>
+            <li><a href="location.html" class="nav-link">Direccion</a></li>
+            <li><a href="menu.html" class="nav-link">Menu</a></li>
+            <li><a href="contact.html" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SLIDER (solo imágenes) -->
+    <div class="hero-slider">
+        <div class="slider-track" id="sliderTrack">
+            <div class="slide active">
+                <img src="imagenes/slides/slide-home-1.webp" alt="Plato de mariscos" class="slide-img" loading="eager">
+            </div>
+            <div class="slide">
+                <img src="imagenes/slides/slide-home-2.webp" alt="Plato de carne" class="slide-img" loading="lazy">
+            </div>
+            <div class="slide">
+                <img src="imagenes/slides/slide-home-3.webp" alt="Sopa gourmet" class="slide-img" loading="lazy">
+            </div>
+            <div class="slide">
+                <img src="imagenes/slides/slide-home-4.webp" alt="Bebidas y vinos" class="slide-img" loading="lazy">
+            </div>
+        </div>
+        <button class="slider-btn prev" id="prevSlide">‹</button>
+        <button class="slider-btn next" id="nextSlide">›</button>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido-principal">
+        <section class="bienvenida">
+            <h1>Bienvenido a Nuestro Restaurante</h1>
+            <p>Descubre una experiencia culinaria única con los mejores platillos de mariscos, carnes, sopas y una selección exclusiva de vinos y cervezas.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

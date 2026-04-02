@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Restaurante | Dirección</title>
+    <meta name="description" content="Encuéntranos en Miami Beach. Ven a disfrutar de la mejor experiencia gastronómica frente al mar.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="imagenes/header/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/header/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="imagenes/header/favicon-192x192.png">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER SUPERIOR -->
+    <header class="header-superior">
+        <div class="header-vacio"></div>
+        <div class="header-derecha">
+            <button class="btn-idioma" id="btnIdioma">🇪🇸 Español</button>
+        </div>
+    </header>
+
+    <!-- BANNER AZUL DE NAVEGACIÓN -->
+    <nav class="banner-azul">
+        <ul class="nav-lista">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">Acerca de</a></li>
+            <li><a href="location.html" class="nav-link activo">Direccion</a></li>
+            <li><a href="menu.html" class="nav-link">Menu</a></li>
+            <li><a href="contact.html" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAPA INTERACTIVO -->
+    <div class="mapa-container">
+        <div id="mapa-restaurante"></div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL CON TARJETA DEGRADADA -->
+    <main class="contenido-principal location-page">
+        <div class="location-card">
+            <h1 class="location-title">Nuestra Ubicación</h1>
+            
+            <div class="location-grid">
+                <!-- Tarjeta de dirección -->
+                <div class="info-card direccion-card">
+                    <div class="card-icon">📍</div>
+                    <h2>7 Tables on the Beach</h2>
+                    <p class="direccion-texto">123 Ocean Drive, Miami Beach, FL 33139</p>
+                    <p class="direccion-detalle">🌊 Frente al mar, entre la 1st y 2nd Street</p>
+                    <p class="direccion-telefono">📞 +1 (305) 555-0123</p>
+                    <a href="https://maps.google.com/?q=25.7915,-80.1300" target="_blank" class="btn-mapa">Ver en Google Maps →</a>
+                </div>
+                
+                <!-- Tarjeta de horario -->
+                <div class="info-card horario-card">
+                    <div class="card-icon">🕒</div>
+                    <h2>Horario de Atención</h2>
+                    <ul class="horario-lista">
+                        <li><span class="dia">Lunes a Jueves:</span><span class="hora">12:00 PM - 11:00 PM</span></li>
+                        <li><span class="dia">Viernes y Sábado:</span><span class="hora">12:00 PM - 1:00 AM</span></li>
+                        <li><span class="dia">Domingo:</span><span class="hora">12:00 PM - 10:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Tarjeta de descripción del restaurante -->
+            <div class="descripcion-card">
+                <div class="card-icon">🍽️</div>
+                <h2>Sobre Nuestro Restaurante</h2>
+                <p>Ubicados en el corazón de Miami Beach, <strong>7 Tables on the Beach</strong> te ofrece una experiencia gastronómica única con vistas al mar. Nuestro ambiente acogedor y elegante es perfecto para disfrutar de una cena romántica, una reunión familiar o una celebración especial.</p>
+                <p>Contamos con estacionamiento privado para nuestros comensales y acceso directo a la playa. Déjate llevar por la brisa marina mientras degustas nuestros exclusivos platillos de mariscos frescos y cortes premium.</p>
+                <div class="invitacion">✨ Te esperamos con los brazos abiertos ✨</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

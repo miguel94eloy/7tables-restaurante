@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Restaurante | Menú</title>
+    <meta name="description" content="Descubre nuestro menú con los mejores platillos de mariscos, carnes, sopas y una selección exclusiva de vinos y cervezas.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="imagenes/header/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/header/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="imagenes/header/favicon-192x192.png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER SUPERIOR -->
+    <header class="header-superior">
+        <div class="header-vacio"></div>
+        <div class="header-derecha">
+            <button class="btn-idioma" id="btnIdioma">🇪🇸 Español</button>
+        </div>
+    </header>
+
+    <!-- BANNER AZUL DE NAVEGACIÓN -->
+    <nav class="banner-azul">
+        <ul class="nav-lista">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">Acerca de</a></li>
+            <li><a href="location.html" class="nav-link">Direccion</a></li>
+            <li><a href="menu.html" class="nav-link activo">Menu</a></li>
+            <li><a href="contact.html" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- PÁGINA DE MENÚ -->
+    <main class="menu-page">
+        <!-- BLOQUE SUPERIOR: Seafood + Beef (polaroids a la derecha) -->
+        <div class="menu-block seafood-block">
+            <div class="menu-block-inner">
+                <div class="menu-text">
+                    <h2 class="script-title">Seafood</h2>
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">PESCADO A LO MACHO</span>
+                                <span class="item-price">$26.99</span>
+                            </div>
+                            <div class="item-desc">Filete de pescado fresco con salsa de camarones y calamares</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">CAMARONES AL AJILLO</span>
+                                <span class="item-price">$24.99</span>
+                            </div>
+                            <div class="item-desc">Camarones salteados con ajo, vino blanco y perejil</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">PAELLA MARINERA</span>
+                                <span class="item-price">$32.99</span>
+                            </div>
+                            <div class="item-desc">Arroz con mariscos, mejillones, calamares y camarones</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">OSTIONES FRESCOS</span>
+                                <span class="item-price">$18.99</span>
+                            </div>
+                            <div class="item-desc">Media docena de ostiones frescos con salsa de la casa</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="sub-script-title">Beef</h3>
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">RIB EYE PRIME</span>
+                                <span class="item-price market-price">MARKET PRICE</span>
+                            </div>
+                            <div class="item-desc">Corte premium de res a la parrilla con mantequilla de hierbas</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">FILETE MIGNON</span>
+                                <span class="item-price">$38.99</span>
+                            </div>
+                            <div class="item-desc">Filete tierno envuelto en tocino con salsa de vino tinto</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">COSTILLAS BBQ</span>
+                                <span class="item-price market-price">MARKET PRICE</span>
+                            </div>
+                            <div class="item-desc">Costillas de res glaseadas con salsa barbacoa casera</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="polaroid-col right-polaroids">
+                    <div class="polaroid polaroid-1">
+                        <img src="imagenes/menu/seafood-1.webp" alt="Plato de mariscos">
+                    </div>
+                    <div class="polaroid polaroid-2">
+                        <img src="imagenes/menu/seafood-2.webp" alt="Camarones al ajillo">
+                    </div>
+                    <div class="polaroid polaroid-3">
+                        <img src="imagenes/menu/beef-1.webp" alt="Rib eye steak">
+                    </div>
+                    <div class="polaroid polaroid-4">
+                        <img src="imagenes/menu/beef-2.webp" alt="Filete mignon">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE INFERIOR: Soup + Drinks + Wine + Beers (polaroids a la izquierda) -->
+        <div class="menu-block soup-block">
+            <div class="menu-block-inner reverse">
+                <div class="polaroid-col left-polaroids">
+                    <div class="polaroid polaroid-1">
+                        <img src="imagenes/menu/soup-1.webp" alt="Sopa de langosta">
+                    </div>
+                    <div class="polaroid polaroid-2">
+                        <img src="imagenes/menu/drinks-1.webp" alt="Bebidas refrescantes">
+                    </div>
+                    <div class="polaroid polaroid-3">
+                        <img src="imagenes/menu/wine-1.webp" alt="Vino tinto">
+                    </div>
+                    <div class="polaroid polaroid-4">
+                        <img src="imagenes/menu/beer-1.webp" alt="Cerveza artesanal">
+                    </div>
+                </div>
+                <div class="menu-text">
+                    <h2 class="script-title">Soup</h2>
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">SOPA DE LANGOSTA</span>
+                                <span class="item-price">$14.99</span>
+                            </div>
+                            <div class="item-desc">Crema suave de langosta con trozos de carne</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">CALDO DE MARISCOS</span>
+                                <span class="item-price">$12.99</span>
+                            </div>
+                            <div class="item-desc">Caldo tradicional con camarones, calamares y pescado</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="sub-script-title">Drinks</h3>
+                    <div class="menu-list compact">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">SODAS</span>
+                                <span class="item-price">$2.99</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">WATER</span>
+                                <span class="item-price">$1.99</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">SPARKLING WATER</span>
+                                <span class="item-price">$3.99</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="sub-script-title">Wine</h3>
+                    <div class="menu-list compact">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">VINO TINTO (Copa)</span>
+                                <span class="item-price">$8.99</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">VINO BLANCO (Copa)</span>
+                                <span class="item-price">$7.99</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">BOTELLA SELECTA</span>
+                                <span class="item-price">$35.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="sub-script-title">Beers</h3>
+                    <div class="menu-list compact">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">CERVEZA NACIONAL</span>
+                                <span class="item-price">$4.99</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">CERVEZA IMPORTADA</span>
+                                <span class="item-price">$6.99</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <span class="item-name">ARTESANAL IPA</span>
+                                <span class="item-price">$7.99</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-note">Subject to current pricing notice</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

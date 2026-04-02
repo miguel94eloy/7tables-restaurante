@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Restaurante | Acerca de</title>
+    <meta name="description" content="Conoce nuestra historia, tradición y pasión por la cocina. Un restaurante familiar con los mejores sabores.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="imagenes/header/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/header/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="imagenes/header/favicon-192x192.png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER SUPERIOR -->
+    <header class="header-superior">
+        <div class="header-vacio"></div>
+        <div class="header-derecha">
+            <button class="btn-idioma" id="btnIdioma">🇪🇸 Español</button>
+        </div>
+    </header>
+
+    <!-- BANNER AZUL DE NAVEGACIÓN -->
+    <nav class="banner-azul">
+        <ul class="nav-lista">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link activo">Acerca de</a></li>
+            <li><a href="location.html" class="nav-link">Direccion</a></li>
+            <li><a href="menu.html" class="nav-link">Menu</a></li>
+            <li><a href="contact.html" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SLIDER (1 sola imagen) -->
+    <div class="hero-slider">
+        <div class="slider-track" id="sliderTrack">
+            <div class="slide active">
+                <img src="imagenes/slides/about-1.webp" alt="Nuestro restaurante" class="slide-img" loading="eager">
+            </div>
+        </div>
+        <!-- Ocultar botones y dots cuando solo hay 1 imagen -->
+        <style>
+            .hero-slider:has(.slide:only-child) .slider-btn,
+            .hero-slider:has(.slide:only-child) .slider-dots {
+                display: none;
+            }
+        </style>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido-principal">
+        <section class="about-section">
+            <h1 class="about-title">Quiénes Somos</h1>
+            
+            <div class="about-historia">
+                <p class="historia-intro">Todo comenzó hace más de 30 años, en una pequeña cocina familiar donde los aromas del mar se mezclaban con las especias de la tierra.</p>
+                
+                <p>Nuestro fundador, el chef <strong>Mateo Reyes</strong>, creció entre fogones y recetas transmitidas de generación en generación. Su abuela, Doña Carmen, le enseñó que la cocina no es solo técnica, es <strong>pasión, amor y memoria</strong>. Cada plato debe contar una historia.</p>
+                
+                <p>En 1992, Mateo abrió las puertas de <strong>7 Tables on the Beach</strong> con un sueño modesto: ofrecer a su comunidad el sabor auténtico de los mariscos frescos y los cortes de carne más suaves, acompañados de una selección de vinos que evocaran los atardeceres en la costa.</p>
+                
+                <p>Hoy, seguimos fieles a esa esencia. Nuestras recetas combinan <strong>tradición familiar</strong> con un toque contemporáneo. Cada ingrediente es seleccionado a mano, cada plato es preparado con el mismo cariño que Doña Carmen ponía en su cocina.</p>
+                
+                <p>Más que un restaurante, somos un lugar de encuentro. Aquí las familias celebran, los amigos se reencuentran y los sabores nos conectan con lo que realmente importa: <strong>el placer de compartir una buena mesa</strong>.</p>
+                
+                <p class="historia-cierre">Te invitamos a ser parte de nuestra historia. Porque en cada bocado, hay un pedazo de nuestro corazón.</p>
+            </div>
+            
+            <div class="about-valores">
+                <div class="valor-card">
+                    <div class="valor-icono">🌊</div>
+                    <h3>Frescura</h3>
+                    <p>Productos del mar y tierra seleccionados diariamente.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icono">🔥</div>
+                    <h3>Pasión</h3>
+                    <p>Cocinamos con el alma, como en casa.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icono">❤️</div>
+                    <h3>Familia</h3>
+                    <p>Un trato cercano que te hará sentir como en casa.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

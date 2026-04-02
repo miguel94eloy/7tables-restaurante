@@ -632,7 +632,6 @@ body {
 .menu-block {
     max-width: 1200px;
     margin: 0 auto 50px auto;
-    /* Degradado: azul claro arriba → blanco puro abajo */
     background: linear-gradient(180deg, #d9e9ff 0%, #ffffff 100%);
     padding: 50px 40px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.08);
@@ -646,7 +645,6 @@ body {
     transform: translateY(0);
 }
 
-/* Retraso escalonado para los bloques */
 .menu-block.visible:first-child {
     transition-delay: 0.05s;
 }
@@ -657,27 +655,25 @@ body {
 .menu-block-inner {
     display: flex;
     gap: 40px;
-    align-items: flex-start;
+    align-items: center; /* Cambiado de flex-start a center para centrar verticalmente */
 }
 
 .menu-block-inner.reverse {
     flex-direction: row-reverse;
 }
 
-/* Columna de texto */
 .menu-text {
     flex: 2;
 }
 
-/* Columna de polaroids */
 .polaroid-col {
     flex: 1;
     display: flex;
     flex-direction: column;
     position: relative;
+    justify-content: center; /* Centrar verticalmente las polaroids */
 }
 
-/* Polaroids - bordes rectos, sin redondeo, borde blanco fino */
 .polaroid {
     background: white;
     padding: 6px 6px 10px 6px;
@@ -690,7 +686,6 @@ body {
     position: relative;
 }
 
-/* Superposición vertical (collage) */
 .polaroid-col .polaroid:not(:first-child) {
     margin-top: -25px;
 }
@@ -743,7 +738,7 @@ body {
 }
 
 /* ============================================ */
-/* EFECTO HOVER SUAVE TIPO ARTE BAYAMO - MÁS LENTO */
+/* EFECTO HOVER */
 /* ============================================ */
 .right-polaroids .polaroid:nth-child(1):hover {
     transform: rotate(-6deg) translateX(-8px) scale(1.03);
@@ -813,7 +808,7 @@ body {
     margin: 25px 0 15px 0;
 }
 
-/* Lista de menú - efecto escalonado al aparecer */
+/* Lista de menú */
 .menu-list .menu-item {
     opacity: 0;
     transform: translateX(-10px);
@@ -888,74 +883,85 @@ body {
 }
 
 /* ============================================ */
-/* RESPONSIVE */
+/* RESPONSIVE - MANTENIENDO DOS COLUMNAS EN MÓVIL */
 /* ============================================ */
 @media (max-width: 768px) {
     .menu-page {
-        padding: 20px 4%;
+        padding: 20px 3%;
     }
     
     .menu-block {
-        padding: 30px 20px;
-        margin-bottom: 30px;
+        padding: 30px 15px;
+        margin-bottom: 25px;
     }
     
+    /* Mantener dos columnas */
     .menu-block-inner,
     .menu-block-inner.reverse {
-        flex-direction: column;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center; /* Centrado vertical */
+    }
+    
+    .menu-text {
+        flex: 1.6;
+        min-width: 0;
     }
     
     .polaroid-col {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex: 1;
+        min-width: 0;
         justify-content: center;
-        gap: 15px;
-        margin-top: 20px;
     }
     
-    /* En móvil, quitar superposición, desplazamientos y rotaciones */
-    .polaroid-col .polaroid:not(:first-child) {
-        margin-top: 0;
-    }
-    
+    /* Tamaño ajustado: 75% (un poco más grande que antes) */
     .polaroid {
-        max-width: 120px;
-        padding: 5px 5px 8px 5px;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        max-width: 75%;
+        width: 75%;
+        padding: 4px 4px 7px 4px;
     }
     
-    .right-polaroids .polaroid:nth-child(1),
-    .right-polaroids .polaroid:nth-child(2),
-    .right-polaroids .polaroid:nth-child(3),
-    .right-polaroids .polaroid:nth-child(4),
-    .left-polaroids .polaroid:nth-child(1),
-    .left-polaroids .polaroid:nth-child(2),
-    .left-polaroids .polaroid:nth-child(3),
-    .left-polaroids .polaroid:nth-child(4) {
-        transform: rotate(0deg) translateX(0);
+    /* Superposición ajustada */
+    .polaroid-col .polaroid:not(:first-child) {
+        margin-top: -15px;
     }
     
-    .right-polaroids .polaroid:nth-child(1):hover,
-    .right-polaroids .polaroid:nth-child(2):hover,
-    .right-polaroids .polaroid:nth-child(3):hover,
-    .right-polaroids .polaroid:nth-child(4):hover,
-    .left-polaroids .polaroid:nth-child(1):hover,
-    .left-polaroids .polaroid:nth-child(2):hover,
-    .left-polaroids .polaroid:nth-child(3):hover,
-    .left-polaroids .polaroid:nth-child(4):hover {
-        transform: scale(1.04) translateY(-4px);
-        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    /* Rotaciones para móvil */
+    .right-polaroids .polaroid:nth-child(1) { 
+        transform: rotate(-4deg) translateX(-4px);
+    }
+    .right-polaroids .polaroid:nth-child(2) { 
+        transform: rotate(3deg) translateX(6px);
+    }
+    .right-polaroids .polaroid:nth-child(3) { 
+        transform: rotate(-3deg) translateX(-4px);
+    }
+    .right-polaroids .polaroid:nth-child(4) { 
+        transform: rotate(4deg) translateX(6px);
     }
     
+    .left-polaroids .polaroid:nth-child(1) { 
+        transform: rotate(4deg) translateX(4px);
+    }
+    .left-polaroids .polaroid:nth-child(2) { 
+        transform: rotate(-3deg) translateX(-6px);
+    }
+    .left-polaroids .polaroid:nth-child(3) { 
+        transform: rotate(3deg) translateX(4px);
+    }
+    .left-polaroids .polaroid:nth-child(4) { 
+        transform: rotate(-4deg) translateX(-6px);
+    }
+    
+    /* Texto legible */
     .script-title {
         font-size: 2rem;
-        text-align: center;
+        margin-bottom: 15px;
     }
     
     .sub-script-title {
         font-size: 1.5rem;
-        text-align: center;
+        margin: 15px 0 10px 0;
     }
     
     .item-name {
@@ -967,26 +973,80 @@ body {
     }
     
     .item-desc {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+    }
+    
+    /* Hover móvil */
+    .polaroid:hover {
+        transform: scale(1.04) translateY(-3px);
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .polaroid {
-        max-width: 100px;
+        max-width: 80%;
+        width: 80%;
+    }
+    
+    .polaroid-col .polaroid:not(:first-child) {
+        margin-top: -12px;
     }
     
     .script-title {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
     }
     
     .sub-script-title {
         font-size: 1.3rem;
     }
     
-    .item-header {
-        flex-wrap: wrap;
-        gap: 5px;
+    .item-name {
+        font-size: 0.8rem;
+    }
+    
+    .item-price {
+        font-size: 0.8rem;
+    }
+    
+    .item-desc {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-block-inner,
+    .menu-block-inner.reverse {
+        gap: 10px;
+    }
+    
+    .polaroid {
+        max-width: 85%;
+        width: 85%;
+        padding: 3px 3px 5px 3px;
+    }
+    
+    .polaroid-col .polaroid:not(:first-child) {
+        margin-top: -10px;
+    }
+    
+    .script-title {
+        font-size: 1.5rem;
+    }
+    
+    .sub-script-title {
+        font-size: 1.1rem;
+    }
+    
+    .item-name {
+        font-size: 0.75rem;
+    }
+    
+    .item-price {
+        font-size: 0.75rem;
+    }
+    
+    .item-desc {
+        font-size: 0.6rem;
     }
 }
 
@@ -1330,4 +1390,20 @@ body {
     .red-social {
         padding: 12px 15px;
     }
+}
+
+/* Prevenir selección de texto en elementos del menú */
+.menu-text,
+.polaroid,
+.script-title,
+.sub-script-title,
+.menu-item {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Ocultar elementos de debug si existen */
+[debug],
+[data-debug] {
+    display: none !important;
 }
